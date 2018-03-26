@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.qfzs.dao.Agent_userDao" >
+  <resultMap id="BaseResultMap" type="com.cn.qfzs.pojo.Agent_user" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="TINYINT" />
+    <result column="parent_user_id" property="parentUserId" jdbcType="INTEGER" />
+    <result column="tm_user_id" property="tmUserId" jdbcType="INTEGER" />
+    <result column="login_time" property="loginTime" jdbcType="INTEGER" />
+    <result column="isdelete" property="isdelete" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="INTEGER" />
+    <result column="child_count" property="childCount" jdbcType="INTEGER" />
+    <result column="child_count_1" property="childCount1" jdbcType="INTEGER" />
+    <result column="child_count_2" property="childCount2" jdbcType="INTEGER" />
+    <result column="commission_percent" property="commissionPercent" jdbcType="REAL" />
+    <result column="commission" property="commission" jdbcType="DECIMAL" />
+    <result column="commission_freeze" property="commissionFreeze" jdbcType="DECIMAL" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="alipay_id" property="alipayId" jdbcType="VARCHAR" />
+    <result column="alipay_name" property="alipayName" jdbcType="VARCHAR" />
+    <result column="pid_1" property="pid1" jdbcType="INTEGER" />
+    <result column="pid_2" property="pid2" jdbcType="INTEGER" />
+    <result column="cookie" property="cookie" jdbcType="VARCHAR" />
+    <result column="member_id" property="memberId" jdbcType="VARCHAR" />
+    <result column="buy_mm" property="buyMm" jdbcType="INTEGER" />
+    <result column="agent_type" property="agentType" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, level, parent_user_id, tm_user_id, login_time, isdelete, create_time, update_time, 
+    child_count, child_count_1, child_count_2, commission_percent, commission, commission_freeze, 
+    phone, password, user_name, alipay_id, alipay_name, pid_1, pid_2, cookie, member_id, 
+    buy_mm, agent_type
+  </sql>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from agent_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.qfzs.pojo.Agent_user" >
+    insert into agent_user (id, level, parent_user_id, 
+      tm_user_id, login_time, isdelete, 
+      create_time, update_time, child_count, 
+      child_count_1, child_count_2, commission_percent, 
+      commission, commission_freeze, phone, 
+      password, user_name, alipay_id, 
+      alipay_name, pid_1, pid_2, 
+      cookie, member_id, buy_mm, 
+      agent_type)
+    values (#{id,jdbcType=INTEGER}, #{level,jdbcType=TINYINT}, #{parentUserId,jdbcType=INTEGER}, 
+      #{tmUserId,jdbcType=INTEGER}, #{loginTime,jdbcType=INTEGER}, #{isdelete,jdbcType=BIT}, 
+      #{createTime,jdbcType=INTEGER}, #{updateTime,jdbcType=INTEGER}, #{childCount,jdbcType=INTEGER}, 
+      #{childCount1,jdbcType=INTEGER}, #{childCount2,jdbcType=INTEGER}, #{commissionPercent,jdbcType=REAL}, 
+      #{commission,jdbcType=DECIMAL}, #{commissionFreeze,jdbcType=DECIMAL}, #{phone,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{alipayId,jdbcType=VARCHAR}, 
+      #{alipayName,jdbcType=VARCHAR}, #{pid1,jdbcType=INTEGER}, #{pid2,jdbcType=INTEGER}, 
+      #{cookie,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, #{buyMm,jdbcType=INTEGER}, 
+      #{agentType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.qfzs.pojo.Agent_user" >
+    insert into agent_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="parentUserId != null" >
+        parent_user_id,
+      </if>
+      <if test="tmUserId != null" >
+        tm_user_id,
+      </if>
+      <if test="loginTime != null" >
+        login_time,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="childCount != null" >
+        child_count,
+      </if>
+      <if test="childCount1 != null" >
+        child_count_1,
+      </if>
+      <if test="childCount2 != null" >
+        child_count_2,
+      </if>
+      <if test="commissionPercent != null" >
+        commission_percent,
+      </if>
+      <if test="commission != null" >
+        commission,
+      </if>
+      <if test="commissionFreeze != null" >
+        commission_freeze,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="alipayId != null" >
+        alipay_id,
+      </if>
+      <if test="alipayName != null" >
+        alipay_name,
+      </if>
+      <if test="pid1 != null" >
+        pid_1,
+      </if>
+      <if test="pid2 != null" >
+        pid_2,
+      </if>
+      <if test="cookie != null" >
+        cookie,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="buyMm != null" >
+        buy_mm,
+      </if>
+      <if test="agentType != null" >
+        agent_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=TINYINT},
+      </if>
+      <if test="parentUserId != null" >
+        #{parentUserId,jdbcType=INTEGER},
+      </if>
+      <if test="tmUserId != null" >
+        #{tmUserId,jdbcType=INTEGER},
+      </if>
+      <if test="loginTime != null" >
+        #{loginTime,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="childCount != null" >
+        #{childCount,jdbcType=INTEGER},
+      </if>
+      <if test="childCount1 != null" >
+        #{childCount1,jdbcType=INTEGER},
+      </if>
+      <if test="childCount2 != null" >
+        #{childCount2,jdbcType=INTEGER},
+      </if>
+      <if test="commissionPercent != null" >
+        #{commissionPercent,jdbcType=REAL},
+      </if>
+      <if test="commission != null" >
+        #{commission,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionFreeze != null" >
+        #{commissionFreeze,jdbcType=DECIMAL},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipayId != null" >
+        #{alipayId,jdbcType=VARCHAR},
+      </if>
+      <if test="alipayName != null" >
+        #{alipayName,jdbcType=VARCHAR},
+      </if>
+      <if test="pid1 != null" >
+        #{pid1,jdbcType=INTEGER},
+      </if>
+      <if test="pid2 != null" >
+        #{pid2,jdbcType=INTEGER},
+      </if>
+      <if test="cookie != null" >
+        #{cookie,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyMm != null" >
+        #{buyMm,jdbcType=INTEGER},
+      </if>
+      <if test="agentType != null" >
+        #{agentType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.qfzs.pojo.Agent_user" >
+    update agent_user
+    <set >
+      <if test="level != null" >
+        level = #{level,jdbcType=TINYINT},
+      </if>
+      <if test="parentUserId != null" >
+        parent_user_id = #{parentUserId,jdbcType=INTEGER},
+      </if>
+      <if test="tmUserId != null" >
+        tm_user_id = #{tmUserId,jdbcType=INTEGER},
+      </if>
+      <if test="loginTime != null" >
+        login_time = #{loginTime,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="childCount != null" >
+        child_count = #{childCount,jdbcType=INTEGER},
+      </if>
+      <if test="childCount1 != null" >
+        child_count_1 = #{childCount1,jdbcType=INTEGER},
+      </if>
+      <if test="childCount2 != null" >
+        child_count_2 = #{childCount2,jdbcType=INTEGER},
+      </if>
+      <if test="commissionPercent != null" >
+        commission_percent = #{commissionPercent,jdbcType=REAL},
+      </if>
+      <if test="commission != null" >
+        commission = #{commission,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionFreeze != null" >
+        commission_freeze = #{commissionFreeze,jdbcType=DECIMAL},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipayId != null" >
+        alipay_id = #{alipayId,jdbcType=VARCHAR},
+      </if>
+      <if test="alipayName != null" >
+        alipay_name = #{alipayName,jdbcType=VARCHAR},
+      </if>
+      <if test="pid1 != null" >
+        pid_1 = #{pid1,jdbcType=INTEGER},
+      </if>
+      <if test="pid2 != null" >
+        pid_2 = #{pid2,jdbcType=INTEGER},
+      </if>
+      <if test="cookie != null" >
+        cookie = #{cookie,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyMm != null" >
+        buy_mm = #{buyMm,jdbcType=INTEGER},
+      </if>
+      <if test="agentType != null" >
+        agent_type = #{agentType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.qfzs.pojo.Agent_user" >
+    update agent_user
+    set level = #{level,jdbcType=TINYINT},
+      parent_user_id = #{parentUserId,jdbcType=INTEGER},
+      tm_user_id = #{tmUserId,jdbcType=INTEGER},
+      login_time = #{loginTime,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=INTEGER},
+      child_count = #{childCount,jdbcType=INTEGER},
+      child_count_1 = #{childCount1,jdbcType=INTEGER},
+      child_count_2 = #{childCount2,jdbcType=INTEGER},
+      commission_percent = #{commissionPercent,jdbcType=REAL},
+      commission = #{commission,jdbcType=DECIMAL},
+      commission_freeze = #{commissionFreeze,jdbcType=DECIMAL},
+      phone = #{phone,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      alipay_id = #{alipayId,jdbcType=VARCHAR},
+      alipay_name = #{alipayName,jdbcType=VARCHAR},
+      pid_1 = #{pid1,jdbcType=INTEGER},
+      pid_2 = #{pid2,jdbcType=INTEGER},
+      cookie = #{cookie,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=VARCHAR},
+      buy_mm = #{buyMm,jdbcType=INTEGER},
+      agent_type = #{agentType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+ <select id="getAgentUserByPhone" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from agent_user
+    where phone = #{phone,jdbcType=VARCHAR} 
+  </select>
+  
+  <select id="getAgentById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from agent_user 
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  
+   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from agent_user
+    where tm_user_id = #{id,jdbcType=INTEGER}
+  </select>
+</mapper>

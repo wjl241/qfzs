@@ -13,8 +13,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;  
   
 import com.alibaba.fastjson.JSON;  
-import com.cn.ttz.pojo.User;  
-import com.cn.ttz.service.IUserService;  
+import com.cn.qfzs.pojo.User;  
+import com.cn.qfzs.service.IUserService;  
   
 @RunWith(SpringJUnit4ClassRunner.class)     //表示继承了SpringJUnit4ClassRunner类  
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})  

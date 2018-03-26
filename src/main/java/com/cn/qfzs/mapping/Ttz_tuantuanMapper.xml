@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.qfzs.dao.Ttz_tuantuanDao" >
+  <resultMap id="BaseResultMap" type="com.cn.qfzs.pojo.Ttz_tuantuan" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="good_id" property="goodId" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="order_sn" property="orderSn" jdbcType="VARCHAR" />
+    <result column="order_hash" property="orderHash" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="INTEGER" />
+    <result column="ttz_goods_id" property="ttzGoodsId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, good_id, order_id, order_sn, order_hash, status, create_time, update_time, 
+    ttz_goods_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ttz_tuantuan
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ttz_tuantuan
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.qfzs.pojo.Ttz_tuantuan" >
+    insert into ttz_tuantuan (id, user_id, good_id, 
+      order_id, order_sn, order_hash, 
+      status, create_time, update_time, 
+      ttz_goods_id)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{goodId,jdbcType=VARCHAR}, 
+      #{orderId,jdbcType=INTEGER}, #{orderSn,jdbcType=VARCHAR}, #{orderHash,jdbcType=CHAR}, 
+      #{status,jdbcType=TINYINT}, #{createTime,jdbcType=INTEGER}, #{updateTime,jdbcType=INTEGER}, 
+      #{ttzGoodsId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.qfzs.pojo.Ttz_tuantuan" >
+    insert into ttz_tuantuan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="goodId != null" >
+        good_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="orderSn != null" >
+        order_sn,
+      </if>
+      <if test="orderHash != null" >
+        order_hash,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="ttzGoodsId != null" >
+        ttz_goods_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="goodId != null" >
+        #{goodId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderSn != null" >
+        #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderHash != null" >
+        #{orderHash,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="ttzGoodsId != null" >
+        #{ttzGoodsId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.qfzs.pojo.Ttz_tuantuan" >
+    update ttz_tuantuan
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="goodId != null" >
+        good_id = #{goodId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderSn != null" >
+        order_sn = #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderHash != null" >
+        order_hash = #{orderHash,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="ttzGoodsId != null" >
+        ttz_goods_id = #{ttzGoodsId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.qfzs.pojo.Ttz_tuantuan" >
+    update ttz_tuantuan
+    set user_id = #{userId,jdbcType=INTEGER},
+      good_id = #{goodId,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=INTEGER},
+      order_sn = #{orderSn,jdbcType=VARCHAR},
+      order_hash = #{orderHash,jdbcType=CHAR},
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=INTEGER},
+      ttz_goods_id = #{ttzGoodsId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 新增方法 -->
+  <update id="insertUnfreezes" parameterType="java.util.List" >
+   	update ttz_tuantuan
+     <foreach collection ="list" item="unFreeze" index= "index" separator =",">
+           ( #{unFreeze.userId}, #{unFreeze.amount}, #{unFreeze.createTime}, #{unFreeze.updateTime}, #{unFreeze.status}, #{unFreeze.rate}, #{unFreeze.receiveTime} 
+           )
+     </foreach >
+  </update>
+  
+ <!-- 未完成品，后期优化 --> 
+<update id="updateTuanStatus" parameterType="Map">    
+        update ttz_tuantuan   set     
+        status = 
+        	 <foreach collection="list" item="item" index="index" separator=" " open="case id" close="end">
+      			 when #{item.id,jdbcType=INTEGER} then #{item.status,jdbcType=TINYINT}
+			 </foreach>
+       	where  1=1  and 
+	         <foreach collection="list" item="item" open="(" close=")" separator="OR">  
+	  		      user_id = #{item.user_id} and ttz_goods_id = #{item.ttz_goods_id}  
+	  		</foreach>  
+	    
+  	</update>   
+ 
+  	
+  <!-- 
+  <select id="selectByUser_id" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from ttz_tuantuan
+    where user_id = #{user_id} and create_time &gt; #{start_time} and create_time &lt; #{end_time}  
+    and ttz_goods_id =#{ttz_goods_id}
+  </select>
+   -->	
+  <select id="selectByUser_id" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from ttz_tuantuan
+    where user_id = #{user_id} and create_time &gt; #{start_time} and create_time &lt; #{end_time}  
+    and ttz_goods_id =#{ttz_goods_id}
+  </select>
+  
+   <select id="selectByGoodId" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from ttz_tuantuan
+    where status = 3 and ttz_goods_id =#{ttz_goods_id} order by update_time desc 
+  </select>
+  
+  
+  <select id="selectIsTuan" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    select count(1) from ttz_tuantuan where user_id = #{userId,jdbcType=INTEGER} and status = 3
+  </select>
+  
+  <!-- 修改很久没变的正在参团团状态为未cantuan -->
+  
+   <update id="updateExpireTuanStatus" parameterType="java.util.Map" >
+    update ttz_tuantuan set
+      status = 1,
+      update_time = #{updateTime} 
+      where update_time &lt;= #{time1}  and update_time &gt;= #{time2}  and status = 2
+  </update>
+  
+ 
+</mapper>

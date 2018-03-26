@@ -1,11 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.zsl.ttz</groupId>
-	<artifactId>TTZ</artifactId>
+	<groupId>org.zsl.qfzs</groupId>
+	<artifactId>qfzs</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>TTZ</name>
+	<name>qfzs</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -235,6 +235,27 @@
 			<version>3.6</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>org.apache.directory.studio</groupId>
+			<artifactId>org.apache.commons.codec</artifactId>
+			<version>1.8</version>
+		</dependency>
+		
+		<dependency>
+    <groupId>org.eclipse.ecf</groupId>
+    <artifactId>org.apache.commons.codec</artifactId>
+    <version>1.9.0.v20170208-1614</version>
+    
+   
+    
+</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+<dependency>
+    <groupId>commons-logging</groupId>
+    <artifactId>commons-logging</artifactId>
+    <version>1.2</version>
+</dependency>
 	</dependencies>
 	
 	
@@ -255,6 +276,6 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>org.zsl.ttz</finalName>
+        <finalName>org.zsl.qfzs</finalName>
 	</build>
 </project>

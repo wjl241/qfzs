@@ -10,7 +10,7 @@
                         http://www.springframework.org/schema/mvc  
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
-	<context:component-scan base-package="com.cn.ttz.controller" />
+	<context:component-scan base-package="com.cn.qfzs.controller" />
 	<!--避免IE执行AJAX时，返回JSON出现下载文件 -->
 	<bean id="mappingJacksonHttpMessageConverter"
 		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
@@ -58,19 +58,19 @@
 	</bean>
 	
 	<!-- 业务对象 -->
-	<bean id="bizObject1" class="com.cn.ttz.timer.OrderTask" />
+	<bean id="bizObject1" class="com.cn.qfzs.timer.OrderTask" />
 	<!-- 业务对象 -->
-	<bean id="bizObject2" class="com.cn.ttz.timer.billTask" />
+	<bean id="bizObject2" class="com.cn.qfzs.timer.billTask" />
 	<!-- 业务对象 -->
-	<bean id="bizObject3" class="com.cn.ttz.timer.PidTask" />
+	<bean id="bizObject3" class="com.cn.qfzs.timer.PidTask" />
 	<!-- 业务对象 -->
-	<bean id="bizObject4" class="com.cn.ttz.timer.WLQTask" />
+	<bean id="bizObject4" class="com.cn.qfzs.timer.WLQTask" />
 	<!-- 业务对象 -->
-	<bean id="bizObject5" class="com.cn.ttz.timer.RedPacketExpireTask" />
+	<bean id="bizObject5" class="com.cn.qfzs.timer.RedPacketExpireTask" />
 	<!-- 业务对象 -->
-	<bean id="bizObject6" class="com.cn.ttz.timer.NPCTask" />
+	<bean id="bizObject6" class="com.cn.qfzs.timer.NPCTask" />
 	<!-- 业务对象 -->
-	<bean id="bizObject7" class="com.cn.ttz.timer.TuanTask" />
+	<bean id="bizObject7" class="com.cn.qfzs.timer.TuanTask" />
 	
 	
 	<!-- 调度业务 -->
@@ -221,13 +221,6 @@
 	          <ref bean="taskTrigger6" /> 
 	          <ref bean="taskTrigger7" /> 
 	         -->
-	          <ref bean="taskTrigger1" />
-	          <ref bean="taskTrigger2" />
-	          <ref bean="cronTrigger3" />
-	          <ref bean="cronTrigger4" />
-	          <ref bean="taskTrigger5" />    
-	          <ref bean="taskTrigger6" /> 
-	          <ref bean="taskTrigger7" /> 
 	        </list>
 	        
 	         

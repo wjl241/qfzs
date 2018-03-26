@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.qfzs.dao.Jihes_qf_timeDao" >
+  <resultMap id="BaseResultMap" type="com.cn.qfzs.pojo.Jihes_qf_time" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, phone, status, time, create_time, update_time,number  
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from jihes_qf_time
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jihes_qf_time
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.qfzs.pojo.Jihes_qf_time" >
+    insert into jihes_qf_time (id, user_id, phone, 
+      status, time, create_time, 
+      update_time, number)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{time,jdbcType=VARCHAR}, #{createTime,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=INTEGER}, #{number,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.qfzs.pojo.Jihes_qf_time" >
+    insert into jihes_qf_time
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.qfzs.pojo.Jihes_qf_time" >
+    update jihes_qf_time
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.qfzs.pojo.Jihes_qf_time" >
+    update jihes_qf_time
+    set user_id = #{userId,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      time = #{time,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+   <!-- 查询当前用户所有无效的发送时间段，小段 -->
+    <select id="getNoUseTime" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jihes_qf_time
+    where user_id = #{userId,jdbcType=INTEGER} and status = 1
+  </select>
+  
+  
+     <!-- 查询当前用户所有无效的发送时间段，小段 -->
+    <select id="getNoUseTime2" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jihes_qf_time
+    where user_id = #{user_id} and status = 1 and time = #{time}
+  </select>
+  
+  
+  
+  
+  	<!-- 获取当前用户关闭的时间段，小时 -->
+   <select id="getNoUseTimes" parameterType="java.lang.Integer" resultType="java.lang.String">
+    select time from jihes_qf_time where 
+    user_id = #{userId,jdbcType=INTEGER} and status = 1 
+    group by time HAVING count(1) =6
+  </select>
+  
+  
+    <!-- 查询当前用户所有无效的发送时间段，小段,所有 -->
+    <select id="getNoUseTimes3" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jihes_qf_time
+    where user_id = #{user_id} and status = 1 
+  </select>
+  
+  
+   <!--  获取某个用户某个时间段time实体 -->
+    <select id="getDeleteTime" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jihes_qf_time
+    where user_id = #{user_id} and time = #{time} and number = #{number}
+  </select>
+  
+    <!--  获取某个用户某个时间段time实体 -->
+    <select id="getDeleteTimes" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jihes_qf_time
+    where user_id = #{user_id} and time = #{time} 
+  </select>
+  
+  
+    <!--  获取某个用户所有的时间 -->
+    <select id="getAllTimes" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jihes_qf_time
+    where user_id = #{user_id}  
+  </select>
+  
+  
+    	<!-- 批量修改队列 -->
+    <update id="updateTimes" parameterType="java.util.List" >
+    
+     <foreach collection ="list" item="item"  separator =";" >
+  		update jihes_qf_time 
+		    set user_id = #{item.userId}, 
+		    phone = #{item.phone},
+		    status = #{item.status},
+		    time = #{item.time},
+		    create_time = #{item.createTime},
+		    update_time = #{item.updateTime},
+		    number = #{item.number}
+		where id = #{item.id}
+      </foreach >
+
+  </update>
+  
+  <!-- 批量插入队列 -->
+   <insert id="insertTimes" parameterType="java.util.List" >
+     <selectKey resultType ="java.lang.Integer" keyProperty= "id" order= "AFTER">
+                  SELECT LAST_INSERT_ID()
+     </selectKey >
+    insert into jihes_qf_time (id, user_id, phone, 
+		      status, time, create_time, 
+		      update_time, number) values  
+    
+     <foreach collection ="list" item="item" index= "index" separator =",">
+           ( #{item.id}, #{item.userId}, #{item.phone}, 
+		      #{item.status}, #{item.time}, #{item.createTime}, 
+		      #{item.updateTime}, #{item.number}
+           )
+     </foreach >
+  </insert>
+  
+  
+   <!--  获取每个时间段的无效时间-->
+    <select id="getNoUseTimes4" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select count(1) as create_time,time from jihes_qf_time where  
+    user_id = #{userId,jdbcType=INTEGER} and status =1 group by time
+  </select>
+  
+  
+</mapper>
